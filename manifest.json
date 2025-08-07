@@ -1,0 +1,21 @@
+{
+  "name": "智能茶咖机器人",
+  "short_name": "茶咖机",
+  "description": "一个用于控制智能茶咖机器人的Web应用",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F5F5F5",
+  "theme_color": "#6D4C41",
+  "icons": [
+    {
+      "src": "https://www.w3.org/TR/appmanifest/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://www.w3.org/TR/appmanifest/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
