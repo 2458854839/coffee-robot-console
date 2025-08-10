@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>登录 - 智能茶咖机器人</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light font-sans flex items-center justify-center h-screen">
+
+    <div class="w-full max-w-sm p-8 space-y-6 bg-white rounded-xl shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-dark flex items-center justify-center">
+            <i class="fa fa-coffee mr-3 text-primary"></i>
+            智能茶咖机器人
+        </h1>
+
+        <form id="login-form" class="space-y-6">
+            <div>
+                <label for="username" class="text-sm font-medium text-gray-700">用户名</label>
+                <input id="username" name="username" type="text" required
+                    class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                    placeholder="请输入用户名">
+            </div>
+
+            <div>
+                <label for="password" class="text-sm font-medium text-gray-700">密码</label>
+                <input id="password" name="password" type="password" required
+                    class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                    placeholder="请输入密码">
+            </div>
+            
+            <p id="error-message" class="text-sm text-red-600 text-center hidden">用户名或密码错误！</p>
+
+            <button type="submit"
+                class="w-full py-3 text-lg text-white bg-primary rounded-md font-semibold hover:bg-dark transition-colors">
+                登 录
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+
+        // 预设的账号密码
+        const FIXED_USERNAME = '2458854839';
+        const FIXED_PASSWORD = '12345678';
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = form.username.value;
+            const password = form.password.value;
+
+            if (username === FIXED_USERNAME && password === FIXED_PASSWORD) {
+                // 登录成功
+                sessionStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'index.html';
+            } else {
+                // 登录失败
+                errorMessage.classList.remove('hidden');
+                form.reset();
+            }
+        });
+    </script>
+     <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</body>
+</html>

@@ -1,7 +1,9 @@
 // 定义需要缓存的核心文件
-const CACHE_NAME = 'tea-coffee-robot-v1';
+const CACHE_NAME = 'tea-coffee-robot-v2'; // 更新缓存版本号
 const urlsToCache = [
+  './login.html',
   './index.html',
+  './style.css',
   'https://cdn.tailwindcss.com',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
   'https://unpkg.com/mqtt@4.3.7/dist/mqtt.min.js'
