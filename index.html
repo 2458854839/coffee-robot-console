@@ -59,11 +59,16 @@
                     <input type="number" id="mqtt-port" value="8084" 
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
                 </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">路径</label>
+                    <input type="text" id="mqtt-path" value="/mqtt" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                </div>
                 <div class="flex items-center pb-2">
                      <input id="ssl-checkbox" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" checked>
                      <label for="ssl-checkbox" class="ml-2 block text-sm font-medium text-gray-700">SSL</label>
                 </div>
-                <button id="connect-btn" class="w-full bg-primary text-white py-2 px-4 rounded-md btn-hover">
+                <button id="connect-btn" class="w-full bg-primary text-white py-2 px-4 rounded-md btn-hover md:col-start-4">
                     连接设备
                 </button>
             </div>
@@ -170,6 +175,7 @@
             connectBtn: document.getElementById('connect-btn'),
             serverInput: document.getElementById('mqtt-server'),
             portInput: document.getElementById('mqtt-port'),
+            pathInput: document.getElementById('mqtt-path'), // 新增路径输入框
             sslCheckbox: document.getElementById('ssl-checkbox'),
             statusText: document.getElementById('status-text'),
             statusIndicator: document.getElementById('status-indicator'),
@@ -268,9 +274,10 @@
         const connect = () => {
             const server = elements.serverInput.value;
             const port = parseInt(elements.portInput.value);
+            const path = elements.pathInput.value;
             const useSsl = elements.sslCheckbox.checked;
             const protocol = useSsl ? 'wss' : 'ws';
-            const brokerUrl = `${protocol}://${server}:${port}`;
+            const brokerUrl = `${protocol}://${server}:${port}${path}`;
             
             const options = {
                 clientId: 'web_console_' + Math.random().toString(16).substr(2, 8),
